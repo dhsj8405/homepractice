@@ -1,6 +1,6 @@
 # homepractice_BE
 
-- [chat-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/chat) / Front-end : [chat-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/chat-practice)  
+- [chat-practice](https://github.com/dhsj8405/homepractice/tree/main/backend/springboot)/ Front-end : [chat-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/chat-practice)  
 채팅(stomp활용 기본브로커)
 - [cors-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/cors) / Front-end : [cors-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/cors-practice)  
 cors 필터 활용해서 cors 이슈 공부
