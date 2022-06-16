@@ -1,4 +1,4 @@
-# homepractice_FE
+# FrontEnd - react
 개인 공부 및 개인 프로젝트
 
 - [babel-practice](https://github.com/dhsj8405/homepractice/edit/main/frontend/react/babel-practice) : 바벨 기본 공부  
