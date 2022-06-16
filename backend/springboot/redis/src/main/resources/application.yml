@@ -1,0 +1,88 @@
+# active spring boot profile
+spring:
+   profiles:
+      active: dev   
+
+---
+
+# common - spring configuration
+spring:
+
+   # devtools - live reload
+   devtools:
+      livereload:
+         enabled: true
+
+   # mvc
+   mvc:
+      view:
+         prefix: /WEB-INF/views/
+         suffix: .jsp
+
+   # message resource(Internationalization)
+   messages:
+      always-use-message-format: true
+      basename: messages/messages_ko
+      encoding: utf-8
+
+   # multipart
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 50MB
+         max-request-size: 50MB 
+   
+---
+
+# dev profile - spring boot configuration
+
+spring:
+   config:
+      activate:
+         on-profile: dev
+      
+         # datasource
+   datasource:
+      username: chat
+      password: chat
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://192.168.219.104:3307/chat?characterEncoding=utf8
+      hikari:
+         minimum-idle: 10
+         maximum-pool-size: 20
+   redis:
+      lettuce:
+         pool:
+            min-idle: 0 # pool에 할당될 수 있는 커넥션 최대수 (음수로 하면 무제한)
+            max-idle: 8 # pool의 "idle" 커넥션 최대수 (음수로 하면 무제한)
+            max-active: 8 # 풀에서 관리하는 idle 커넥션의 최소 수 대상
+      port: 6379
+      host: 127.0.0.1
+---
+
+# production profile - spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: production
+
+---
+
+# server
+server:
+   port: 9099
+   servlet:
+     context-path: 
+     encoding:
+        charset: utf-8
+        enabled: true
+        force: false
+        force-request: false
+        force-response: false
+
+---
+
+# mybatis
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
+   

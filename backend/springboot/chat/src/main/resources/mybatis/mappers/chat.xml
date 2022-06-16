@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat">
+	
+	<insert id="createRoom" parameterType="chatRoomDto">
+		<![CDATA[
+			insert into chat_room values (null, "")
+		]]>
+	
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+				<![CDATA[
+				select last_insert_id()
+				]]>
+		</selectKey>
+	</insert>
+	
+	<insert id="createChatInfo" parameterType="map">
+		<![CDATA[
+			insert into join_chat_room values (null, #{userNo}, #{chatRoomNo})
+		]]>
+	</insert>
+	<select id="findAllMessage" resultType="ChatMessageDto">
+		<![CDATA[
+			select a.no as no,
+				   a.message as message,
+				   a.chat_room_no as chatRoomNo,
+				   a.id as sendUserId,
+				   a.name as sendUserName,
+				   a.reg_date as regDate
+				from
+					(select cm.no,
+							cm.message,
+				            cm.chat_room_no,
+				            cm.reg_date,
+				            u.id,
+				            u.name
+					   from chat_message cm, 
+						    user u
+					  where chat_room_no= 1
+				        and cm.send_user_no = u.no
+				   order by no desc 
+				    limit 0,20) a
+			order by no asc;
+		]]>
+	</select>
+	
+		<select id="findAllMessage2" resultType="ChatMessageDto">
+		<![CDATA[
+			select a.no as no,
+				   a.message as message,
+				   a.chat_room_no as chatRoomNo,
+				   a.send_user_no as sendUserNo,
+				   a.reg_date as regDate 
+				from
+					(select no,message,chat_room_no,send_user_no,reg_date 
+				    from chat_message
+				    where chat_room_no= 1
+				    order by no desc 
+				    limit 0,20) a
+				    order by no asc
+		]]>
+	</select>
+	
+
+	
+	<select id="findAllMessage1" resultType="ChatMessageDto">
+		<![CDATA[
+			select no,message,chat_room_no,send_user_no,reg_date 
+		      from chat_message
+		     where chat_room_no= 1
+		]]>
+	</select>
+	
+	<select id="findAllChatRoom" resultType="ChatRoomDto">
+		<![CDATA[
+			select cr.no, 
+				   cr.name, 
+				   jcr.user_no 
+  			  from chat_room cr, 
+	   			   join_chat_room jcr 
+ 			 where cr.no = jcr.chat_room_no
+   			   and jcr.user_no = (select no from user where id = #{id});
+		]]>
+	</select>
+	
+	
+	
+	<insert id="insertMessage" parameterType="ChatMessageDto">
+		<![CDATA[
+			insert into chat_message values (null, #{message}, #{chatRoomNo}, #{sendUserNo}, now())
+		]]>
+	</insert>
+	
+	
+</mapper>
+
