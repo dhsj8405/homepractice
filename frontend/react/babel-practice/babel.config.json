@@ -1,0 +1,18 @@
+{
+    // 바벨 프리셋
+    // 지원할 브라우저 정보와 일부옵션을 지정하면 자동으로 필요한 기능들 주입함
+    "presets": [
+        ["@babel/preset-env", {
+            "targets": {
+                "ie": "11",
+                "edge": "89",
+                "firefox": "92",
+                "chrome": "90",
+                "opera": "76",
+                "safari" : "15"
+            }
+
+        }],
+        "@babel/react" 
+    ]
+}
