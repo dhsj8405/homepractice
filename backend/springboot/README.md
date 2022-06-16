@@ -1,4 +1,4 @@
-# homepractice_BE
+# BackEnd - springboot
 
 - [chat-practice](https://github.com/dhsj8405/homepractice/tree/main/backend/springboot/chat)/ Front-end : [chat-practice](https://github.com/dhsj8405/homepractice/tree/main/frontend/react/chat-practice)  
 채팅(stomp활용 기본브로커)
