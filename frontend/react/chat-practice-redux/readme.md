@@ -1,7 +1,7 @@
 # Chat Application
 
 `Front-end` React  
-`Back-end` Spring Boot   
+`Back-end` Spring Boot [기본브로커](https://github.com/dhsj8405/homepractice/tree/main/backend/springboot/chat), [Redis pub/sub](https://github.com/dhsj8405/homepractice/tree/main/backend/springboot/chatRedis)  
 `Database` MariaDB  
 `메시징 프로토콜` StompJS(+SockJs)
 `상태관리` Redux
