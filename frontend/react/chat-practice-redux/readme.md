@@ -6,7 +6,7 @@
 `메시징 프로토콜` StompJS(+SockJs)
 `상태관리` Redux
 
-# 설치 및 추가해야햘것
+# 설치 및 추가해야할것
 - package.json 생성  
 `npm init -y`
 
