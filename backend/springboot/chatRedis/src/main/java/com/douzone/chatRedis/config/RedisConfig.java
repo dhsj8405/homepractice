@@ -24,7 +24,7 @@ public class RedisConfig {
 	 * redis pub/sub 메시지를 처리하는 listener 설정
 	 */
     
-	//lettuce 라이브러리 사용
+	//lettuce 커넥터 구성 : Lettuce connection factory 생성
 	@Bean
 	public RedisConnectionFactory redisConnectionFactory() {
 	    return new LettuceConnectionFactory(host, port);
