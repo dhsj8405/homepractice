@@ -21,6 +21,9 @@ const [userInfo, setUserInfo] = useState({
 
 });
 
+  useEffect(() => {
+    localStorage.setItem('jwtToken', '');
+  }, []);
 
 /*
  *  아이디 비번 입력 
@@ -37,74 +40,42 @@ const [userInfo, setUserInfo] = useState({
      
     // 로그인 버튼 핸들러
     const onClickLogin = (e,user) => {
-     console.log(user)
+        console.log(user)
         
-     e.preventDefault();
+        e.preventDefault();
 
-    
-    //  fetch(`http://localhost:9099/login/auth/`, {
-    //   method: "get"
-    //   // res에 결과가 들어옴
-    // }).then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res)
-    //     }
-    //   );
-     
-    axios({
-        url: 'http://localhost:9099/login/auth',
-        method: 'post',
-        data: user
-    }).then((res)=> {
-        console.log(res.data);
-        
-    }).catch((error)=>{
-        console.log("######로그인버튼 클릭시 에러####")
-        console.log(error)
-    })
-
-
-        //채팅방리스트 가져오기
-        // getChatRoomList();
-        //유저 정보 가져오기
-        // getUserList();
-
-    }
-//===============================================================================================
-
-const[chatRoomList, setChatRoomList] = useState([]);
-const getChatRoomList = () => {
-    if(loginUser.id === "aaaa" || loginUser.id === "bbbb" ){
         axios({
-            url: 'http://localhost:9099/chat/chatRoomList',
+            url: 'http://localhost:9099/login/login',
             method: 'post',
-            data: loginUser
+            data: user
         }).then((res)=> {
+            console.log(res.data);  
+            localStorage.setItem('jwtToken',res.data);
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data;
+            console.log(localStorage.getItem('jwtToken'));
             
-            console.log(res.data.list);
-            setChatRoomList(res.data.list);
+        }).catch((error)=>{
+            console.log("######로그인버튼 클릭시 에러####")
+            console.log(error)
         })
-    }else{
-        console.log("채팅방없음")
-    }
-}
-const getUserList = () => {
-    if(loginUser.id === "aaaa" || loginUser.id === "bbbb" ){
-        axios({
-            url: 'http://localhost:9099/user/userInfo',
-            method: 'post',
-            data: loginUser
-        }).then((res)=> {
-            
-            console.log(res.data);
-            setUserInfo(res.data)
-        })
-    }else{
-        console.log("유저정보 없음")
-    }
-}
 
+    }
 
+    const onClickAuth = (e,user) => {
+        e.preventDefault();
+            axios({
+                url: 'http://localhost:9099/login/auth',
+                method: 'post',
+                data: user
+            }).then((res)=> {
+                console.log(res.data);  
+                
+                
+            }).catch((error)=>{
+                console.log("######권한요청 클릭시 에러####")
+                
+            })
+    }
 
     return (
         <div className='center-content'>
@@ -130,6 +101,7 @@ const getUserList = () => {
                 </InputGroup>
             </Form>
             <button onClick={(e)=> onClickLogin(e,loginUser)}>로그인하기</button>
+            <button onClick={(e)=> onClickAuth(e,loginUser)}>권한요청</button>
         </div>
     );
 };

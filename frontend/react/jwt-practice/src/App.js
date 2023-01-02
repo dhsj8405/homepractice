@@ -1,5 +1,5 @@
 // axios.defaults.withCredentials = true;
-import React from 'react';
+import React  from 'react';
 // import * as Stomp from "webstomp-client";
 import{BrowserRouter} from 'react-router-dom';
 
@@ -12,23 +12,24 @@ import Login from './pages/Login';
 
 
 const App = () => {
-
     return (
-    <>
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element= {<Home/>} />
-                <Route path='/login' element= {<Login/>} />
-                <Route path='/about' element= {<About/>} />
-                <Route path='/chat' element= {<Chat/>} />
-            </Routes>
-        </BrowserRouter>
-
-
-
-    </>
-        
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/login' element= {<Login/>} />
+                    <Route path='/' element= {<Home/>} />
+                    
+                    <Route path='/about' element= {<About/>} />
+                    <Route path='/chat' element= {<Chat/>} /> 
+                </Routes>
+            </BrowserRouter>
+    
+    
+    
+        </>
+            
     );
+    
 }
 
 export default App;
