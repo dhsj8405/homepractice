@@ -81,13 +81,13 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- JWT -->
-		<!-- 
-			 <dependency>
-	            <groupId>org.springframework.boot</groupId>
-	            <artifactId>spring-boot-starter-security</artifactId>
-	        </dependency>
-         -->
+		
+		<!-- security --> 
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        
         <!-- For Working with JSon Web Tokens ( JWT) -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

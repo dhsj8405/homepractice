@@ -47,7 +47,7 @@ spring:
       username: chat
       password: chat
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://192.168.219.104:3307/chat?characterEncoding=utf8
+      url: jdbc:mysql://192.168.219.106:3307/chat?characterEncoding=utf8
       hikari:
          minimum-idle: 10
          maximum-pool-size: 20

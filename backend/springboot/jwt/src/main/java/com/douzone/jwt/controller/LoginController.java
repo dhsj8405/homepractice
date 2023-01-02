@@ -19,25 +19,24 @@ public class LoginController {
 //	  public ResponseEntity<String> hello(){
 //		return ResponseEntity.ok("hello");
 //	}
-	@PostMapping("/auth")
+	@PostMapping("/login")
 	  public ResponseEntity getUserInfo(@RequestBody UserVo userVo){
-		System.out.println("@@@@@@@@@@@");
-		System.out.println(userVo.getId());
-		JwtTokenProvider jwtTokenProvider = new JwtTokenProvider (); 
-		String token = jwtTokenProvider.generateToken();
-		  return ResponseEntity.ok(token);
+//		JwtTokenProvider jwtTokenProvider = new JwtTokenProvider (); 
+//		String token = jwtTokenProvider.generateToken();
+//		  return ResponseEntity.ok(token);
+		
+		
 //		UserVo a = userService.getUserInfo(userVo);
 //		System.out.println(a.getName());
 //	  	return token;
 	  }
 
-//	@GetMapping("/login/auth")
-//	  public UserVo getUserInfo(){
-//		System.out.println("액시오스테스트");
-//		
-////		UserVo a = userService.getUserInfo(userVo);
-////		System.out.println(a.getName());
-//	  	return null;
-//	  }
+	@PostMapping("/auth")
+	  public UserVo getUserInfo(){
+		
+//		UserVo a = userService.getUserInfo(userVo);
+//		System.out.println(a.getName());
+	  	return null;
+	  }
 	
 }
